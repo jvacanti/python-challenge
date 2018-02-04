@@ -53,6 +53,20 @@ print("=================")
 for Candidate in CandidateSummary:
     print(Candidate + ": " + str(round(CandidateSummary[Candidate]/TotalVotes * 100,1)) + "%" + " (" + str(CandidateSummary[Candidate]) + ")")
 print("=================")
-
 print("Winner: " + winner)
 print("=================")
+
+
+output_file = os.path.join("PollResults.txt")
+f = open(output_file, "w")
+f.write("Election Results" + "\n")
+f.write("=================" + "\n")
+f.write("Total Votes:" + str(TotalVotes) + "\n")
+f.write("=================" + "\n")
+for Candidate in CandidateSummary:
+    f.write(Candidate + ": " + str(round(CandidateSummary[Candidate]/TotalVotes * 100,1)) + "%" + " (" + str(CandidateSummary[Candidate]) + ")" + "\n")
+f.write("=================" + "\n")
+
+f.write("Winner: " + winner + "\n")
+f.write("=================" + "\n")
+f.close()
